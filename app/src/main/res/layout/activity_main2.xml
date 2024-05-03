@@ -21,7 +21,9 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         app:layout_constraintTop_toBottomOf="@id/settingseditview"
-        app:layout_constraintBottom_toTopOf="@id/prefText"/>
+        app:layout_constraintBottom_toTopOf="@id/prefText"
+        android:onClick="savePref"
+        />
 
     <TextView
         android:id="@+id/prefText"
