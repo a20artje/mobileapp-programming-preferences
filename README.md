@@ -7,29 +7,30 @@ _Du kan ta bort all text som finns sedan tidigare_.
 
 ## Följande grundsyn gäller dugga-svar:
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+- Jag började med att skapa en ny activity och la in En button text och editText views
+- Jag la till en knapp i main som startade denna nya activity MainActivity2
+- I MainActivity och MainActivity2 intialiserade jag en SharedPreference så båda activities kunde dela preferences
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
+    myPreferenceRef = getSharedPreferences("MyCookiePreferences", MODE_PRIVATE);
+    myPreferenceEditor = myPreferenceRef.edit();
+``` 
+- I MainActivity2 gjorde jag så att det som skrevs i editText viewen sparades som preferens och att andra aktiviteten stängdes ner
+```
+   myPreferenceEditor.putString("MyAppPreferenceString", newPrefText.getText().toString());
+   myPreferenceEditor.apply();
+```
+- I MainActivity i onResume displayade jag texten så att den uppdaterades när man sparat i andra aktiviteten
+ 
+```
+protected void onResume() {
+    prefTextRef = (TextView)findViewById(R.id.prefTextMain);
+    prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found"));
+    
+    super.onResume();
 }
-```
+ ```
+Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+     
 
 Bilder läggs i samma mapp som markdown-filen.
 
