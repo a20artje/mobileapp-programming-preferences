@@ -22,8 +22,6 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         myPreferenceRef = getSharedPreferences("MyCookiePreferences", MODE_PRIVATE);
         myPreferenceEditor = myPreferenceRef.edit();
-        myPreferenceRef = getPreferences(MODE_PRIVATE);
-        myPreferenceEditor = myPreferenceRef.edit();
 
     }
 
